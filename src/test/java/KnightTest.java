@@ -34,7 +34,7 @@ public class KnightTest {
     @Test
     public void canAttackEnemy() {
         assertEquals("Slicey slicey!", knight.attack(troll));
-        assertEquals(8, troll.getHealthPoints());
+        assertEquals(5, troll.getHealthPoints());
     }
 
     @Test

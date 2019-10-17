@@ -1,4 +1,5 @@
 import abilities.Axe;
+import abilities.Sword;
 import beings.Dwarf;
 import beings.Troll;
 import org.junit.Before;
@@ -9,12 +10,14 @@ import static org.junit.Assert.assertEquals;
 public class DwarfTest {
 
     Dwarf dwarf;
-    Axe axe;
+    Axe myAxe;
+    Troll troll;
 
     @Before
     public void before() {
-        axe = new Axe();
-        dwarf = new Dwarf("Gimli", axe);
+        myAxe = new Axe();
+        dwarf = new Dwarf("Gimli", myAxe);
+        troll = new Troll();
     }
 
     @Test
@@ -29,9 +32,21 @@ public class DwarfTest {
 
     @Test
     public void canAttackEnemy() {
-        Troll troll = new Troll();
         assertEquals("Swish Thwack!", dwarf.attack(troll));
-        assertEquals(9, troll.getHealthPoints());
+        assertEquals(7, troll.getHealthPoints());
+    }
+
+    @Test
+    public void canGetMultiplier() {
+        assertEquals(2, dwarf.getMultiplier());
+    }
+
+    @Test
+    public void canAttackWithMultiplier1() {
+        Sword sword = new Sword();
+        dwarf.changeWeapon(sword);
+        dwarf.attack(troll);
+        assertEquals(8, troll.getHealthPoints());
     }
 
 }
