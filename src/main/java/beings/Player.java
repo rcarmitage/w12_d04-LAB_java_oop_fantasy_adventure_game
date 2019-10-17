@@ -17,4 +17,5 @@ public abstract class Player {
     public int getHealthPoints() {
         return this.healthPoints;
     }
+
 }
