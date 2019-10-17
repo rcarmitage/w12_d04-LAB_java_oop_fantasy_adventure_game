@@ -24,4 +24,9 @@ public class TrollTest {
         assertEquals(9, troll.getHealthPoints());
     }
 
+    @Test
+    public void canDefend() {
+        assertEquals(1, troll.defend());
+    }
+
 }
