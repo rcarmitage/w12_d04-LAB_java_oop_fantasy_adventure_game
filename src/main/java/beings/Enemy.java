@@ -4,8 +4,8 @@ public abstract class Enemy {
 
     private int healthPoints;
 
-    public Enemy() {
-        this.healthPoints = 10;
+    public Enemy(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     public int getHealthPoints() {
@@ -13,6 +13,10 @@ public abstract class Enemy {
     }
 
     public void takeDamage(int amount) {
-        this.healthPoints -= amount;
+        if (this.healthPoints - amount >= 0) {
+            this.healthPoints -= amount;
+        } else {
+            this.healthPoints = 0;
+        }
     }
 }
