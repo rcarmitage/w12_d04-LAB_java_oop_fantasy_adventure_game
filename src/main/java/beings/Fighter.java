@@ -1,9 +1,17 @@
 package beings;
 
+import abilities.IWeapon;
+
 public class Fighter extends Player {
 
-    public Fighter(String name) {
+    private IWeapon weapon;
+
+    public Fighter(String name, IWeapon weapon) {
         super(name);
+        this.weapon = weapon;
     }
 
+    public String attack(Enemy target) {
+        return this.weapon.attack(target);
+    }
 }

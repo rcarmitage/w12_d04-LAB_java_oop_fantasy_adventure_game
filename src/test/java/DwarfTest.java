@@ -1,5 +1,6 @@
 import abilities.Axe;
 import beings.Dwarf;
+import beings.Troll;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +25,13 @@ public class DwarfTest {
     @Test
     public void healthPointsStartsAt10() {
         assertEquals(10, dwarf.getHealthPoints());
+    }
+
+    @Test
+    public void canAttackEnemy() {
+        Troll troll = new Troll();
+        assertEquals("Swish Thwack!", dwarf.attack(troll));
+        assertEquals(9, troll.getHealthPoints());
     }
 
 }
