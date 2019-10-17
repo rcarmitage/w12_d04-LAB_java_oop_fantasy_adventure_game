@@ -14,4 +14,9 @@ public class Fighter extends Player {
     public String attack(Enemy target) {
         return this.weapon.attack(target);
     }
+
+    public void changeWeapon(IWeapon newWeapon) {
+        this.weapon = newWeapon;
+    }
+
 }

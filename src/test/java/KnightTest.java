@@ -1,4 +1,6 @@
 import abilities.Axe;
+import abilities.Bow;
+import abilities.Sword;
 import beings.Knight;
 import beings.Troll;
 import org.junit.Before;
@@ -9,12 +11,14 @@ import static org.junit.Assert.assertEquals;
 public class KnightTest {
 
     Knight knight;
-    Axe axe;
+    Sword sword;
+    Troll troll;
 
     @Before
     public void before() {
-        axe = new Axe();
-        knight = new Knight("Sir Robin", axe);
+        sword = new Sword();
+        knight = new Knight("Sir Robin", sword);
+        troll = new Troll();
     }
 
     @Test
@@ -29,8 +33,22 @@ public class KnightTest {
 
     @Test
     public void canAttackEnemy() {
-        Troll troll = new Troll();
+        assertEquals("Slicey slicey!", knight.attack(troll));
+        assertEquals(8, troll.getHealthPoints());
+    }
+
+    @Test
+    public void canChangeWeapon() {
+        Axe axe = new Axe();
+        knight.changeWeapon(axe);
         assertEquals("Swish Thwack!", knight.attack(troll));
+    }
+
+    @Test
+    public void canAttackWithBow() {
+        Bow bow = new Bow();
+        knight.changeWeapon(bow);
+        assertEquals("Twang thunk!", knight.attack(troll));
         assertEquals(9, troll.getHealthPoints());
     }
 
