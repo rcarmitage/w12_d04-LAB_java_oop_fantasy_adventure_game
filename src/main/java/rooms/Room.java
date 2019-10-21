@@ -25,18 +25,24 @@ public abstract class Room {
         this.enemiesAlive.add(enemy);
     }
 
-    public void isEnemyAlive(Enemy enemy) {
-        if (target.getHealthPoints(enemy) = 0) {
+    public void playerProgress() {
+        if (room.enemiesAlive.size == 0 && room.enemiesDead.size >= 1) {
+            this.progress = true;
+        }
+    }
+
+    public void isEnemyDead(Enemy enemy) {
+        if (target.getHealthPoints(enemy) == 0) {
             System.out.println("Target is dead");
         }
-//            if healthpoints = 0 then remove from enemiesAlive and add to enemiesDead
             this.enemiesAlive.remove(0);
             this.enemiesDead.add(target);
     }
 
     public void turnAttack(Enemy target) {
-
-        player.attack(target);
+        if (room.isEnemyDead(target) == false) {
+            player.attack(target);
+        }
     }
 
 }

@@ -5,12 +5,13 @@ import beings.Troll;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
+import rooms.Room01;
 
 import static org.junit.Assert.assertEquals;
 
 public class RoomTest {
 
-    Room room;
+    Room01 room01;
     Knight player;
     Sword sword;
     Troll troll;
@@ -18,7 +19,7 @@ public class RoomTest {
 
     @Before
     public void before() {
-        room = new Room(player);
+        room01 = new Room01(player);
         player = new Knight("Knight01", sword);
         troll = new Troll();
         salmon01 = new Salmon();
@@ -26,35 +27,27 @@ public class RoomTest {
 
     @Test
     public void playerStartsCannotProgress() {
-        assertEquals (false, room.progress);
+        assertEquals (false, room01.progress);
     }
 
     @Test
     public void roomCanAddEnemy() {
-        room.addEnemy(troll);
-        assertEquals(1, room.enemiesAlive.size());
+        room01.addEnemy(troll);
+        assertEquals(1, room01.enemiesAlive.size());
     }
 
     @Test
     public void canDefeatEnemy() {
-        room.addEnemy(salmon01);
-        room.turnAttack(salmon01);
-        room.isEnemyAlive(salmon01);
-        assertEquals(0, room.enemiesAlive.size());
+        room01.addEnemy(salmon01);
+        room01.turnAttack(salmon01);
+        room01.isEnemyDead(salmon01);
+        assertEquals(0, room01.enemiesAlive.size());
 
-
-////        salmon01.getHealthPoints();
-//        if salmon01.getHealthPoints() = 0 {
-////            if healthpoints = 0 then remove from enemiesAlive and add to enemiesDead
-//            room.enemiesAlive.remove(0);
-//            room.enemiesDead.add(salmon01);
-//        }
-//        return
+    @Test
+    public void canProgress() {
+        room01.addEnemy(salmon01);
+        room01.turnAttack(salmon01);
+        assertEquals(true, room01.playerProgress());
     }
-
-//    @Test
-//    public void playerCanProgress() {
-//
-//    }
 
 }
