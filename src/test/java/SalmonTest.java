@@ -17,13 +17,13 @@ public class SalmonTest {
 
     @Test
     public void startsWith1HealthPoint() {
-        assertEquals(1, salmon.getHealthPoints());
+        assertEquals(1, salmon.getHealthPoints(target));
     }
 
     @Test
     public void cannotOverkill() {
         salmon.takeDamage(2);
-        assertEquals(0, salmon.getHealthPoints());
+        assertEquals(0, salmon.getHealthPoints(target));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class SalmonTest {
         Axe myAxe = new Axe();
         Dwarf dwarf = new Dwarf("Gimli", myAxe);
         dwarf.attack(salmon);
-        assertEquals(0, salmon.getHealthPoints());
+        assertEquals(0, salmon.getHealthPoints(target));
     }
 
 }

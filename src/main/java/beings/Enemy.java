@@ -8,7 +8,7 @@ public abstract class Enemy {
         this.healthPoints = healthPoints;
     }
 
-    public int getHealthPoints() {
+    public int getHealthPoints(Enemy enemy) {
         return this.healthPoints;
     }
 

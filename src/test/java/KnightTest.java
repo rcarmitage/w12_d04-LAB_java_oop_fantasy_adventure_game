@@ -34,7 +34,7 @@ public class KnightTest {
     @Test
     public void canAttackEnemy() {
         assertEquals("Slicey slicey!", knight.attack(troll));
-        assertEquals(5, troll.getHealthPoints());
+        assertEquals(5, troll.getHealthPoints(target));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class KnightTest {
         Bow bow = new Bow();
         knight.changeWeapon(bow);
         assertEquals("Twang thunk!", knight.attack(troll));
-        assertEquals(9, troll.getHealthPoints());
+        assertEquals(9, troll.getHealthPoints(target));
     }
 
 }

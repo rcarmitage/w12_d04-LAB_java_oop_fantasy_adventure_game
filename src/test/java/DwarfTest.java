@@ -33,7 +33,7 @@ public class DwarfTest {
     @Test
     public void canAttackEnemy() {
         assertEquals("Swish Thwack!", dwarf.attack(troll));
-        assertEquals(7, troll.getHealthPoints());
+        assertEquals(7, troll.getHealthPoints(target));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DwarfTest {
         Sword sword = new Sword();
         dwarf.changeWeapon(sword);
         dwarf.attack(troll);
-        assertEquals(8, troll.getHealthPoints());
+        assertEquals(8, troll.getHealthPoints(target));
     }
 
 }
